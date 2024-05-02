@@ -4,17 +4,16 @@
 		"enabled": true
 	},
 	"files": {
-    "ignore": [
-      "routeTree.gen.ts",
-      "node_modules/**",
-      "**/*.json",
-      "**/dist"
-    ]
-  },
+		"ignore": ["routeTree.gen.ts", "node_modules/**", "**/*.json", "**/dist"]
+	},
 	"linter": {
 		"enabled": true,
 		"rules": {
 			"recommended": true
 		}
+	},
+	"formatter": {
+		"formatWithErrors": true,
+		"lineWidth": 100
 	}
 }
