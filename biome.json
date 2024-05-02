@@ -3,6 +3,14 @@
 	"organizeImports": {
 		"enabled": true
 	},
+	"files": {
+    "ignore": [
+      "routeTree.gen.ts",
+      "node_modules/**",
+      "**/*.json",
+      "**/dist"
+    ]
+  },
 	"linter": {
 		"enabled": true,
 		"rules": {
