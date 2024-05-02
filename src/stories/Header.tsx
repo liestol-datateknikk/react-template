@@ -12,12 +12,7 @@ interface HeaderProps {
 	onCreateAccount?: () => void;
 }
 
-export const Header = ({
-	user,
-	onLogin,
-	onLogout,
-	onCreateAccount,
-}: HeaderProps) => (
+export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => (
 	<header>
 		<div className="storybook-header">
 			<div>
@@ -57,12 +52,7 @@ export const Header = ({
 				) : (
 					<>
 						<Button size="small" onClick={onLogin} label="Log in" />
-						<Button
-							primary
-							size="small"
-							onClick={onCreateAccount}
-							label="Sign up"
-						/>
+						<Button primary size="small" onClick={onCreateAccount} label="Sign up" />
 					</>
 				)}
 			</div>
