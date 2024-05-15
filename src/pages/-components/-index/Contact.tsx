@@ -9,6 +9,7 @@ import { useState } from "react";
 //   email: "",
 //   message: "",
 // };
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export const Contact = (props: any) => {
 	const [success, setSuccess] = useState(false);
 	// const [{ name, email, message }, setState] = useState(initialState);
@@ -93,7 +94,7 @@ export const Contact = (props: any) => {
 					<div>
 						<h3 className="text-xl font-normal pb-11">Kontaktinfo</h3>
 						<div className="flex flex-row gap-2 items-center">
-							<Icon icon="cil:location-pin"></Icon>
+							<Icon icon="cil:location-pin" />
 							<p>Adresse</p>
 						</div>
 						<p className="text-sm opacity-85">{props.data ? props.data.address : "loading"}</p>
@@ -101,7 +102,7 @@ export const Contact = (props: any) => {
 
 					<div className="flex flex-col gap-2">
 						<div className="flex flex-row gap-2 items-center">
-							<Icon icon="ic:baseline-phone"></Icon>
+							<Icon icon="ic:baseline-phone" />
 							<p>Telefon</p>
 						</div>
 						<a className="text-sm opacity-85" href={`tel:${props.data.phone}`}>
@@ -111,7 +112,7 @@ export const Contact = (props: any) => {
 
 					<div className="flex flex-col gap-2">
 						<div className="flex flex-row gap-2 items-center">
-							<Icon icon="ic:baseline-email"></Icon>
+							<Icon icon="ic:baseline-email" />
 							<p>Epost</p>
 						</div>
 						<a className="text-sm opacity-85" href={`mailto:${props.data.email}`}>

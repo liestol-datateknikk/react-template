@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { routeTree } from "./routeTree.gen";
 import "./core/i18n";
 
@@ -26,6 +27,9 @@ declare module "@tanstack/react-router" {
 	}
 }
 
+const mode = localStorage.getItem("theme") || "dark";
+localStorage.setItem('theme', mode);
+
 // Register the router instance for type safety
 declare module "@tanstack/react-router" {
 	interface Register {
@@ -37,10 +41,14 @@ declare module "@tanstack/react-router" {
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<NextUIProvider>
-			<QueryClientProvider client={queryClient}>
-				<RouterProvider router={router} />
-				<ReactQueryDevtools initialIsOpen={false} />
-			</QueryClientProvider>
+			<NextThemesProvider attribute="class" defaultTheme={mode}>
+				<main className="text-foreground bg-background flex flex-col">
+					<QueryClientProvider client={queryClient}>
+						<RouterProvider router={router} />
+						<ReactQueryDevtools initialIsOpen={false} />
+					</QueryClientProvider>
+				</main>
+			</NextThemesProvider>
 		</NextUIProvider>
 	</StrictMode>,
 );

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import type { Testimonial } from "@/types/models/landingpage";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
