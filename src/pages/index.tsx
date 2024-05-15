@@ -1,22 +1,21 @@
-
 import { createFileRoute } from "@tanstack/react-router";
-import { Header } from "./-components/-index/Header";
-import { Features } from "./-components/-index/Features";
+import { useEffect, useState } from "react";
+import { ErrorComponent } from "../components/Error";
+import JsonData from "../data/data.json";
+import { type LandingPageData, initialLandingPageData } from "../types/models/landingpage";
 import { About } from "./-components/-index/About";
+import { Contact } from "./-components/-index/Contact";
+import { Features } from "./-components/-index/Features";
+import { Header } from "./-components/-index/Header";
 import { Services } from "./-components/-index/Services";
 import { Testimonials } from "./-components/-index/Testimonials";
-import { Contact } from "./-components/-index/Contact";
-import JsonData from "../data/data.json";
-import { ErrorComponent } from "../components/Error";
-import { useEffect, useState } from "react";
-import { type LandingPageData, initialLandingPageData } from "../types/models/landingpage";
 
 export const IndexComponent = () => {
 	const [landingPageData, setLandingPageData] = useState<LandingPageData>(initialLandingPageData);
 
-  useEffect(() => {
-    setLandingPageData(JsonData);
-  }, []);
+	useEffect(() => {
+		setLandingPageData(JsonData);
+	}, []);
 
 	return (
 		<>
@@ -25,9 +24,9 @@ export const IndexComponent = () => {
 			<About data={landingPageData.About} />
 			<Services data={landingPageData.Services} />
 			<Testimonials data={landingPageData.Testimonials} />
-			<Contact data={landingPageData.Contact}  />
+			<Contact data={landingPageData.Contact} />
 		</>
-	)
+	);
 };
 
 export const Route = createFileRoute("/")({

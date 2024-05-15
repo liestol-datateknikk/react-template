@@ -1,3 +1,5 @@
+import type { ErrorFeedback } from "@/types/models/models";
+import { ErrorFeedbackSchema } from "@/types/validation.types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
 	Avatar,
@@ -11,8 +13,6 @@ import {
 	Textarea,
 } from "@nextui-org/react";
 import { Controller, FormProvider, useForm } from "react-hook-form";
-import type { ErrorFeedback } from "@/types/models/models";
-import { ErrorFeedbackSchema } from "@/types/validation.types";
 
 export const ErrorComponent = () => {
 	const defaultValues: ErrorFeedback = {
