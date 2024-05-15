@@ -3,6 +3,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { NextUIProvider } from "@nextui-org/react";
 import { routeTree } from "./routeTree.gen";
 import "./core/i18n";
 
@@ -35,9 +36,12 @@ declare module "@tanstack/react-router" {
 // biome-ignore lint/style/noNonNullAssertion: <explanation>
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		<QueryClientProvider client={queryClient}>
+					<NextUIProvider>
+					<QueryClientProvider client={queryClient}>
 			<RouterProvider router={router} />
 			<ReactQueryDevtools initialIsOpen={false} />
 		</QueryClientProvider>
+					</NextUIProvider>
+		
 	</StrictMode>,
 );

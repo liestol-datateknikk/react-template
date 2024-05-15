@@ -1,39 +1,36 @@
+
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import reactLogo from "../assets/react.svg";
-import viteLogo from "../assets/vite.svg";
+import { Header } from "./-components/-index/Header";
+import { Features } from "./-components/-index/Features";
+import { About } from "./-components/-index/About";
+import { Services } from "./-components/-index/Services";
+import { Testimonials } from "./-components/-index/Testimonials";
+import { Contact } from "./-components/-index/Contact";
+import JsonData from "../data/data.json";
+import { ErrorComponent } from "../components/Error";
+import { useEffect, useState } from "react";
+import { type LandingPageData, initialLandingPageData } from "../types/models/landingpage";
 
 export const IndexComponent = () => {
-	const [count, setCount] = useState(0);
+	const [landingPageData, setLandingPageData] = useState<LandingPageData>(initialLandingPageData);
+
+  useEffect(() => {
+    setLandingPageData(JsonData);
+  }, []);
 
 	return (
-		<div className="flex flex-col w-fit mx-auto gap-4 h-screen justify-center">
-			<div className="flex flex-col gap-2">
-				<a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-					<img src={viteLogo} className="logo h-14" alt="Vite logo" />
-				</a>
-				<a href="https://react.dev" target="_blank" rel="noreferrer">
-					<img src={reactLogo} className="logo h-14 react" alt="React logo" />
-				</a>
-			</div>
-			<h1>Vite + React</h1>
-			<div className="flex flex-col gap-2">
-				<button
-					className="w-fit bg-[#1a1a1a] text-white py-1.5 px-2 rounded-md"
-					type="button"
-					onClick={() => setCount((count) => count + 1)}
-				>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-		</div>
-	);
+		<>
+			<Header data={landingPageData.Header} />
+			<Features data={landingPageData.Features} />
+			<About data={landingPageData.About} />
+			<Services data={landingPageData.Services} />
+			<Testimonials data={landingPageData.Testimonials} />
+			<Contact data={landingPageData.Contact}  />
+		</>
+	)
 };
 
 export const Route = createFileRoute("/")({
 	component: IndexComponent,
+	errorComponent: ErrorComponent,
 });
